@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+@import "tailwindcss";
+
+:root {
+  --olive-100: oklch(96.6% 0.005 106.5);
+  --olive-200: oklch(93% 0.007 106.5);
+  --olive-300: oklch(88% 0.011 106.6);
+  --olive-400: oklch(73.7% 0.021 106.9);
+  --olive-500: oklch(58% 0.031 107.3);
+  --olive-600: oklch(46.6% 0.025 107.3);
+  --olive-700: oklch(39.4% 0.023 107.4);
+  --olive-800: oklch(28.6% 0.016 107.4);
+  --olive-950: oklch(15.3% 0.006 107.1);
+  --ink: var(--olive-950);
+  --muted: color-mix(in oklab, var(--olive-950) 64%, transparent);
+  --line: color-mix(in oklab, var(--olive-950) 12%, transparent);
+  --paper: var(--olive-100);
+  --paper-2: var(--olive-200);
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: Inter, "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, color-mix(in oklab, var(--olive-400) 18%, transparent), transparent 34rem),
+    linear-gradient(180deg, var(--olive-100), var(--olive-200) 62%, var(--olive-100));
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--olive-400) 44%, transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section[id] {
+  scroll-margin-top: 4.25rem;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 112.5;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.oat-shell {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, white 28%, transparent), transparent),
+    var(--olive-100);
+}
+
+.oat-panel {
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--olive-950) 2.5%, transparent);
+  box-shadow: 0 1px 0 color-mix(in oklab, white 42%, transparent) inset;
+}
+
+.oat-panel-strong {
+  border: 1px solid color-mix(in oklab, var(--olive-950) 16%, transparent);
+  background: color-mix(in oklab, var(--olive-950) 5%, transparent);
+}
+
+.olive-dark {
+  background: var(--olive-950);
+  color: white;
+}
+
+.eyebrow {
+  color: var(--olive-600);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--olive-950);
+  color: white;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.btn-primary:hover {
+  background: var(--olive-800);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--olive-950) 7%, transparent);
+  color: var(--olive-950);
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.btn-secondary:hover {
+  background: color-mix(in oklab, var(--olive-950) 13%, transparent);
+  transform: translateY(-1px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 680ms ease,
+    transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
